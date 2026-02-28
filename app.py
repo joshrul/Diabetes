@@ -12,13 +12,13 @@ df=pd.read_csv("diabetes.csv")
 st.sidebar.title("Navigation")
 page=st.sidebar.radio("Go to",["Home","Visualization","ML Model 1", "ML Model 2"])
 
-
-if page =="Home":
+if page == "Home":
+	
 	st.write("Under Construction")
-elif page =="Visulization":
+elif page == "Visualization":
 	st.write("Under Construction")
-elif page =="ML Model 1":
+elif page == "ML Model 1":
 	st.write("Under Construction")
-elif page =="ML model 2":
+elif page == "ML Model 2":
 	st.write("Under Construction")
 	

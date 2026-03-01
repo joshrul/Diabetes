@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
+import seaborn as sns
 
 
 
@@ -40,7 +41,21 @@ elif page == "Visualization":
 		ax.set_ylabel("Counts")
 		st.pyplot(fig)
 		  
-	
+	st.write("Choose a characteristic to see it's distribution by outcome:")
+	for feature in df.columns:
+		if feature != "Outcome":
+			if st.button(f"Display {feature} Distribution by Outcome"):
+				st.title(f"{feature} Distribution by Outcome")
+				fig, ax = plt.subplots()
+				# plot each outcome separately and give them specific colors
+				sns.kdeplot(data=df[df.Outcome==1], x=feature, fill=True,
+				            label="Diabetic", color="red", ax=ax)
+				sns.kdeplot(data=df[df.Outcome==0], x=feature, fill=True,
+				            label="Non-Diabetic", color="blue", ax=ax)
+				ax.set_title(f"{feature} Distribution by Outcome")
+				ax.legend()
+				st.pyplot(fig)
+
 	
 
 elif page == "ML Model 1":
